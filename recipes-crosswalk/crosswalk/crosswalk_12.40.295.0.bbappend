@@ -11,12 +11,8 @@ DEPENDS_remove = "libxss"
 DEPENDS += "virtual/egl"
 
 RDEPENDS_crosswalk += "\
-    libegl-mesa \
     libgbm \
     libglapi \
-    libgles1-mesa \
-    libgles2-mesa \
-    mesa-megadriver \
     "
 
 DEFAULT_CONFIGURATION += "\
