@@ -4,6 +4,7 @@ SRC_URI += " \
     file://build_fix.patch \
     file://do_not_force_glib.patch \
     file://xwalk \
+    file://wayland-egl-fix.patch \
     "
 
 DEPENDS_remove = "gtk+"
