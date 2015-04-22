@@ -5,6 +5,7 @@ SRC_URI += " \
     file://do_not_force_glib.patch \
     file://xwalk \
     file://wayland-egl-fix.patch \
+    ${@base_contains('DISTRO_FEATURES', 'systemd', 'file://disable-udev-log.patch', '', d)} \
     "
 
 DEPENDS_remove = "gtk+"
