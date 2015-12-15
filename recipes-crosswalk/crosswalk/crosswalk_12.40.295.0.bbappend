@@ -2,10 +2,14 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/crosswalk:"
 
 SRC_URI += " \
     file://build_fix.patch \
-    file://do_not_force_glib.patch \
-    file://xwalk \
-    file://wayland-egl-fix.patch \
     ${@base_contains('DISTRO_FEATURES', 'systemd', 'file://disable-udev-log.patch', '', d)} \
+    file://do_not_force_glib.patch \
+    file://fix-jpeg-bool-boolean.patch \
+    file://fix-missing-stat-includes.patch \
+    file://fix-strict-overflow-error-bignum.patch \
+    file://fix-strict-overflow-error-image.patch \
+    file://wayland-egl-fix.patch \
+    file://xwalk \
     "
 
 DEPENDS_remove = "gtk+"

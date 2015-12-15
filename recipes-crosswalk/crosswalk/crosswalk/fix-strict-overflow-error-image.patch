@@ -1,0 +1,45 @@
+diff --git a/ui/gfx/image/image_util.cc.orig b/ui/gfx/image/image_util.cc
+index 89a3f8c..cdc11eb 100644
+--- a/ui/gfx/image/image_util.cc
++++ b/ui/gfx/image/image_util.cc
+@@ -65,31 +65,31 @@ bool VisibleMargins(const ImageSkia& image, int* leading, int* trailing) {
+     return true;
+ 
+   SkAutoLockPixels l(bitmap);
+-  int inner_min = bitmap.width();
+-  for (int x = 0; x < bitmap.width(); ++x) {
+-    for (int y = 0; y < bitmap.height(); ++y) {
++  unsigned int inner_min = (unsigned int)bitmap.width();
++  for (unsigned int x = 0; x < (unsigned int)bitmap.width(); ++x) {
++    for (unsigned int y = 0; y < (unsigned int)bitmap.height(); ++y) {
+       if (SkColorGetA(bitmap.getColor(x, y)) > kMinimumVisibleOpacity) {
+         inner_min = x;
+         break;
+       }
+     }
+-    if (inner_min < bitmap.width())
++    if (inner_min < (unsigned int)bitmap.width())
+       break;
+   }
+ 
+-  int inner_max = -1;
+-  for (int x = bitmap.width() - 1; x > inner_min; --x) {
+-    for (int y = 0; y < bitmap.height(); ++y) {
++  unsigned int inner_max = -1;
++  for (unsigned int x = (unsigned int)bitmap.width() - 1; x > inner_min; --x) {
++    for (unsigned int y = 0; y < (unsigned int)bitmap.height(); ++y) {
+       if (SkColorGetA(bitmap.getColor(x, y)) > kMinimumVisibleOpacity) {
+         inner_max = x;
+         break;
+       }
+     }
+-    if (inner_max > -1)
++    if (inner_max != (unsigned int)-1)
+       break;
+   }
+ 
+-  if (inner_min == bitmap.width()) {
++  if (inner_min == (unsigned int)bitmap.width()) {
+     *leading = bitmap.width()/2;
+     *trailing = bitmap.width()/2 + 1;
+     return true;

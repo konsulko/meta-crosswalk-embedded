@@ -1,0 +1,14 @@
+diff --git a/components/storage_monitor/storage_monitor_linux.cc.orig b/components/storage_monitor/storage_monitor_linux.cc
+index 6b57f5c..6eb6e1f 100644
+--- a/components/storage_monitor/storage_monitor_linux.cc
++++ b/components/storage_monitor/storage_monitor_linux.cc
+@@ -8,6 +8,9 @@
+ 
+ #include <mntent.h>
+ #include <stdio.h>
++#include <unistd.h>
++#include <sys/stat.h>
++#include <sys/types.h>
+ 
+ #include <list>
+ 
